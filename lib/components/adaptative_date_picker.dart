@@ -49,7 +49,7 @@ class AdaptativeDatePicker extends StatelessWidget {
               ),
               FlatButton(
                 textColor: Theme.of(context).primaryColor,
-                child: Text(
+                child: const Text(
                   'Selecionar data',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,

@@ -19,19 +19,19 @@ class ExpensesApp extends StatelessWidget {
           accentColor: Colors.amber,
           fontFamily: 'Quicksand',
           textTheme: ThemeData.light().textTheme.copyWith(
-                headline6: TextStyle(
+                headline6: const TextStyle(
                   fontFamily: 'OpenSans',
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
                 ),
-                button: TextStyle(
+                button: const TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
                 ),
               ),
           appBarTheme: AppBarTheme(
               textTheme: ThemeData.light().textTheme.copyWith(
-                      headline6: TextStyle(
+                      headline6: const TextStyle(
                     fontFamily: 'Opensans',
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
@@ -53,7 +53,7 @@ class _MyHomePageState extends State<MyHomePage> {
   List<Transaction> get _recenteTransactions {
     return _transactions.where((tr) {
       return tr.date.isAfter(DateTime.now().subtract(
-        Duration(days: 7),
+        const Duration(days: 7),
       ));
     }).toList();
   }
@@ -120,7 +120,7 @@ class _MyHomePageState extends State<MyHomePage> {
     ];
 
     final appBar = AppBar(
-      title: Text(
+      title: const Text(
         'Despesas Pessoais',
       ),
       actions: actions,
@@ -155,7 +155,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Platform.isIOS
         ? CupertinoPageScaffold(
             navigationBar: CupertinoNavigationBar(
-              middle: Text('Despesas Pessoais'),
+              middle: const Text('Despesas Pessoais'),
               trailing: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: actions,
@@ -169,7 +169,7 @@ class _MyHomePageState extends State<MyHomePage> {
             floatingActionButton: Platform.isIOS
                 ? Container()
                 : FloatingActionButton(
-                    child: Icon(Icons.add),
+                    child: const Icon(Icons.add),
                     onPressed: () => _openTransactionFormModal(context),
                   ),
             floatingActionButtonLocation:
