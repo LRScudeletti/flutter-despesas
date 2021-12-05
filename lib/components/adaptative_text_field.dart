@@ -8,12 +8,13 @@ class AdaptativeTextField extends StatelessWidget {
   final TextInputType keyboardType;
   final Function(String) onSubmitted;
 
-  AdaptativeTextField({
+  const AdaptativeTextField({
+    Key? key,
     required this.label,
     required this.controller,
     this.keyboardType = TextInputType.text,
     required this.onSubmitted,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

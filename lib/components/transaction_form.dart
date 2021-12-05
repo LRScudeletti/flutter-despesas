@@ -8,7 +8,7 @@ import 'adaptative_button.dart';
 class TransactionForm extends StatefulWidget {
   final void Function(String, double, DateTime) onSubmit;
 
-  TransactionForm(this.onSubmit);
+  const TransactionForm(this.onSubmit, {Key? key}) : super(key: key);
 
   @override
   State<TransactionForm> createState() => _TransactionFormState();
@@ -23,7 +23,7 @@ class _TransactionFormState extends State<TransactionForm> {
     final title = _titleController.text;
     final value = double.tryParse(_valueController.text) ?? 0.0;
 
-    if (title.isEmpty || value <= 0 || _selectedDate == null) return;
+    if (title.isEmpty || value <= 0) return;
 
     widget.onSubmit(title, value, _selectedDate);
   }
@@ -48,7 +48,8 @@ class _TransactionFormState extends State<TransactionForm> {
               ),
               AdaptativeTextField(
                 controller: _valueController,
-                keyboardType:  const TextInputType.numberWithOptions(decimal: true),
+                keyboardType:
+                    const TextInputType.numberWithOptions(decimal: true),
                 onSubmitted: (_) => _submitForm(),
                 label: 'Valor R\$',
               ),

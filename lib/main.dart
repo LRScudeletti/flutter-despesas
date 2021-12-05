@@ -7,16 +7,16 @@ import 'package:projeto_despesas/components/transaction_form.dart';
 import 'package:projeto_despesas/components/transaction_list.dart';
 import 'package:projeto_despesas/models/transaction.dart';
 
-main() => runApp(ExpensesApp());
+main() => runApp(const ExpensesApp());
 
 class ExpensesApp extends StatelessWidget {
+  const ExpensesApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: MyHomePage(),
+      home: const MyHomePage(),
       theme: ThemeData(
-          primarySwatch: Colors.purple,
-          accentColor: Colors.amber,
           fontFamily: 'Quicksand',
           textTheme: ThemeData.light().textTheme.copyWith(
                 headline6: const TextStyle(
@@ -35,12 +35,16 @@ class ExpensesApp extends StatelessWidget {
                     fontFamily: 'Opensans',
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
-                  )))),
+                  ))),
+          colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.purple)
+              .copyWith(secondary: Colors.amber)),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
+  const MyHomePage({Key? key}) : super(key: key);
+
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
@@ -136,15 +140,15 @@ class _MyHomePageState extends State<MyHomePage> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           if (_showChart || !isLandscape)
-            Container(
+            SizedBox(
               width: double.infinity,
-              child: Container(
+              child: SizedBox(
                 height: availableHeight * (isLandscape ? 1 : 0.3),
                 child: Chart(_recenteTransactions),
               ),
             ),
           if (!_showChart || !isLandscape)
-            Container(
+            SizedBox(
               height: availableHeight * (isLandscape ? 1 : 0.7),
               child: TransactionList(_transactions, _removeTransaction),
             ),
